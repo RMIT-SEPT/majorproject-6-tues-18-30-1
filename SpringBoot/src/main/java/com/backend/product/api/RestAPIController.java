@@ -1,8 +1,7 @@
-package com.backend.api;
+package com.backend.product.api;
 
-import com.backend.model.Business;
-import com.backend.services.BusinessService;
-
+import com.backend.product.model.Product;
+import com.backend.product.services.ProductService;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.*;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +15,7 @@ import java.util.List;
 public class RestAPIController {
 
 	@Autowired
-	BusinessService productService;
+	ProductService productService;
 
 	@PostMapping("/product")
 	public boolean createNewProduct() {
@@ -29,7 +28,7 @@ public class RestAPIController {
 	}
 
 	@GetMapping("/product")
-	public List<Business> getAllProducts() {
+	public List<Product> getAllProducts() {
 		return productService.getAllProducts();
 	}
 

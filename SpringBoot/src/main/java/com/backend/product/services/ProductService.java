@@ -1,20 +1,19 @@
-package com.backend.services;
+package com.backend.product.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.backend.model.Business;
-import com.backend.repositories.BusinessRepository;
-
+import com.backend.product.Repositories.ProductRepository;
 import java.util.List;
+import com.backend.product.model.Product;
 
 @Service
-public class BusinessService {
+public class ProductService {
 
 	@Autowired
-	private BusinessRepository productRepository;
+	private ProductRepository productRepository;
 
-	public Business saveOrUpdatePerson(Business product) {
+	public Product saveOrUpdatePerson(Product product) {
 
 		// logic
 		return productRepository.save(product);
@@ -26,7 +25,7 @@ public class BusinessService {
 		return false;
 	}
 
-	public List<Business> getAllProducts() {
+	public List<Product> getAllProducts() {
 		// TODO Auto-generated method stub
 		return null;
 	}
