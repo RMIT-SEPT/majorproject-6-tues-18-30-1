@@ -1,5 +1,5 @@
-package com.backend.product.web;
+package product.web;
 
 public class ProductController {
-	
+
 }
