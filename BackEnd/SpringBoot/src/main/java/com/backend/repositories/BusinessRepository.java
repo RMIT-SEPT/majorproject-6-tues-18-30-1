@@ -10,11 +10,11 @@ import com.backend.model.User;
 @RepositoryRestResource(collectionResourceRel = "businesses", path = "businesses")
 public interface BusinessRepository extends PagingAndSortingRepository<Business, Long> {
 
-    @Override
-    Iterable<Business> findAllById(Iterable<Long> iterable);
-    
-    User findById(@Param("id") long id);
-
-	Business save(Business business);
+//    @Override
+//    Iterable<Business> findAllById(Iterable<Long> iterable);
+//    
+//    User findById(@Param("id") long id);
+//
+//	Business save(Business business);
 	
 }

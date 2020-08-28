@@ -5,3 +5,15 @@ terraform.tfstate
 terraform.tfstate.backup
 tmp/
 /.metadata/
+JPAtest/.mvn/wrapper/maven-wrapper.jar
+JPAtest/.mvn/wrapper/maven-wrapper.properties
+JPAtest/.mvn/wrapper/MavenWrapperDownloader.java
+JPAtest/mvnw
+JPAtest/mvnw.cmd
+JPAtest/pom.xml
+JPAtest/src/main/java/com/example/demo/JpAtestApplication.java
+JPAtest/src/main/java/model/User.java
+JPAtest/src/main/resources/application.properties
+JPAtest/src/test/java/com/example/demo/JpAtestApplicationTests.java
+JPAtest/.mvn/wrapper/maven-wrapper.jar
+JPAtest/.mvn/wrapper/maven-wrapper.jar

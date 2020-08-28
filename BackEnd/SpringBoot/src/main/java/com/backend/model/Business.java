@@ -6,8 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="BUSINESSES")
 public class Business {
 
 
@@ -15,7 +19,9 @@ public class Business {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String businessName;
-	private List<String> employees;
+	
+//	@ManyToOne
+//	private List<String> employees;
 	
 	protected Business() {}
 
@@ -32,8 +38,8 @@ public class Business {
 		return businessName;
 	}
 
-	public List<String> getEmployees() {
-		return employees;
-	}
+//	public List<String> getEmployees() {
+//		return employees;
+//	}
 
 }
