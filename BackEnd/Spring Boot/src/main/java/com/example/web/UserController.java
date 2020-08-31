@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController                     // Marks class as a controller
 @RequestMapping("/api/users")       // The URI that this controller is connected to
-public class userController {
+public class UserController {
 
     @Autowired
     private UserService userService;
