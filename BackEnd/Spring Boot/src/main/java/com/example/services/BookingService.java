@@ -8,7 +8,6 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.example.model.Booking;
-import com.example.model.Booking;
 import com.example.repositories.BookingRepository;
 
 @Service
