@@ -61,21 +61,6 @@ public class BookingController {
         return new ResponseEntity<Booking>(booking, HttpStatus.CREATED);
     }
 
-    // Patch is long, but I like it better than put :/ - Put is much easier, will just have front end load previous values
-//    @PatchMapping("/{id}")
-//    public ResponseEntity<Booking> updateBooking(@RequestBody Booking updatedBooking, @PathVariable Long id) {
-//        Optional<Booking> storedBooking = bookingService.getBooking(id);
-//        if (!storedBooking.isPresent()) {
-//            return new ResponseEntity(HttpStatus.NOT_FOUND);
-//        }
-//        if (updatedBooking.getBookingLength() != 0) {
-//            storedBooking.get().setBookingLength(updatedBooking.getBookingLength());
-//        }
-//
-//        Booking Booking1 = bookingService.saveOrUpdateBooking(storedBooking.get());
-//        return new ResponseEntity<Booking>(storedBooking.get(), HttpStatus.CREATED);
-//    }
-
     @DeleteMapping("/customers/{customerId}/bookings/{id}")
     public ResponseEntity deleteBooking(@PathVariable Long id, @PathVariable Long customerId) {
         if (bookingService.deleteBooking(id)) {
