@@ -1940,7 +1940,7 @@
   <commands xmi:id="_A_ZCtOuQEeqrCasCDGVJew" elementId="org.eclipse.wst.xml.ui.previousSibling" commandName="Previous Sibling" description="Go to Previous Sibling" category="_A-_aEuuQEeqrCasCDGVJew"/>
   <commands xmi:id="_A_ZCteuQEeqrCasCDGVJew" elementId="org.eclipse.egit.ui.RepositoriesViewConfigurePush" commandName="Configure Push..." category="_A_BPQuuQEeqrCasCDGVJew"/>
   <commands xmi:id="_A_ZCtuuQEeqrCasCDGVJew" elementId="org.eclipse.ui.edit.findIncrementalReverse" commandName="Incremental Find Reverse" description="Incremental find reverse" category="_A-_aEuuQEeqrCasCDGVJew"/>
-  <commands xmi:id="_A_ZCt-uQEeqrCasCDGVJew" elementId="org.eclipse.epp.mpc.ui.command.importFavoritesWizard" commandName="Import Marketplace Favorites" description="Import another user's Marketplace Favorites List" category="_A_BPSuuQEeqrCasCDGVJew">
+  <commands xmi:id="_A_ZCt-uQEeqrCasCDGVJew" elementId="org.eclipse.epp.mpc.ui.command.importFavoritesWizard" commandName="Import Marketplace Favorites" description="Import another customer's Marketplace Favorites List" category="_A_BPSuuQEeqrCasCDGVJew">
     <parameters xmi:id="_A_ZCuOuQEeqrCasCDGVJew" elementId="favoritesUrl" name="favoritesUrl"/>
   </commands>
   <commands xmi:id="_A_ZCueuQEeqrCasCDGVJew" elementId="org.eclipse.wst.jsdt.ui.edit.text.java.introduce.factory" commandName="Introduce Factory" description="Introduce a factory function to encapsulate invocation of the selected constructor" category="_A_BPS-uQEeqrCasCDGVJew"/>
@@ -2296,7 +2296,7 @@
   <commands xmi:id="_A_yEa-uQEeqrCasCDGVJew" elementId="org.eclipse.text.quicksearch.commands.quicksearchCommand" commandName="Quick Search" category="_A_ABKOuQEeqrCasCDGVJew"/>
   <commands xmi:id="_A_yrUOuQEeqrCasCDGVJew" elementId="org.eclipse.egit.ui.team.PushTags" commandName="Push Tags..." category="_A_BPQuuQEeqrCasCDGVJew"/>
   <commands xmi:id="_A_yrUeuQEeqrCasCDGVJew" elementId="org.eclipse.egit.ui.ContinueRebase" commandName="Continue Rebase" category="_A_BPQuuQEeqrCasCDGVJew"/>
-  <commands xmi:id="_A_yrUuuQEeqrCasCDGVJew" elementId="org.eclipse.help.ui.closeTray" commandName="Close User Assistance Tray" description="Close the user assistance tray containing context help information and cheat sheets." category="_A_AoMOuQEeqrCasCDGVJew"/>
+  <commands xmi:id="_A_yrUuuQEeqrCasCDGVJew" elementId="org.eclipse.help.ui.closeTray" commandName="Close User Assistance Tray" description="Close the customer assistance tray containing context help information and cheat sheets." category="_A_AoMOuQEeqrCasCDGVJew"/>
   <commands xmi:id="_A_yrU-uQEeqrCasCDGVJew" elementId="org.eclipse.egit.ui.history.CreatePatch" commandName="Create Patch..." category="_A_BPSuuQEeqrCasCDGVJew"/>
   <commands xmi:id="_A_yrVOuQEeqrCasCDGVJew" elementId="org.eclipse.debug.ui.commands.Resume" commandName="Resume" description="Resume" category="_A_AoN-uQEeqrCasCDGVJew"/>
   <commands xmi:id="_A_yrVeuQEeqrCasCDGVJew" elementId="org.eclipse.wst.jsdt.ui.edit.text.java.toggle.comment" commandName="Toggle Comment" description="Toggle comment the selected lines" category="_A_ABIOuQEeqrCasCDGVJew"/>
@@ -2439,7 +2439,7 @@
   </commands>
   <commands xmi:id="_A_5ZBuuQEeqrCasCDGVJew" elementId="org.eclipse.wst.xsd.ui.refactor.makeElementGlobal" commandName="Make Local Element &amp;Global" description="Promotes local element to global level and replaces its references" category="_A-_aEuuQEeqrCasCDGVJew"/>
   <commands xmi:id="_A_5ZB-uQEeqrCasCDGVJew" elementId="org.eclipse.jdt.ui.correction.encapsulateField.assist" commandName="Quick Assist - Create getter/setter for field" description="Invokes quick assist and selects 'Create getter/setter for field'" category="_A_BPR-uQEeqrCasCDGVJew"/>
-  <commands xmi:id="_A_5ZCOuQEeqrCasCDGVJew" elementId="org.eclipse.ui.help.quickStartAction" commandName="Welcome" description="Show help for beginning users" category="_A_AoMOuQEeqrCasCDGVJew"/>
+  <commands xmi:id="_A_5ZCOuQEeqrCasCDGVJew" elementId="org.eclipse.ui.help.quickStartAction" commandName="Welcome" description="Show help for beginning customers" category="_A_AoMOuQEeqrCasCDGVJew"/>
   <commands xmi:id="_A_5ZCeuQEeqrCasCDGVJew" elementId="org.eclipse.egit.ui.team.ReplaceWithPrevious" commandName="Replace with Previous Revision" category="_A_BPQuuQEeqrCasCDGVJew"/>
   <commands xmi:id="_A_5ZCuuQEeqrCasCDGVJew" elementId="org.eclipse.m2e.sourcelookup.ui.openPom" commandName="Open Pom" category="_A_BPSuuQEeqrCasCDGVJew"/>
   <commands xmi:id="_A_6AEOuQEeqrCasCDGVJew" elementId="org.eclipse.ui.window.hideShowEditors" commandName="Toggle Shared Area Visibility" description="Toggles the visibility of the shared area" category="_A_ABKeuQEeqrCasCDGVJew"/>

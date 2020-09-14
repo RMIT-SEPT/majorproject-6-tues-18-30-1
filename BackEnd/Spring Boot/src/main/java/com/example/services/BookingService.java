@@ -23,19 +23,18 @@ public class BookingService {
     }
 
     // Returns all the Bookings
-    public ArrayList<Booking> getBookings() {
-        return (ArrayList<Booking>) bookingRepository.findAll();
+    public ArrayList<Booking> getBookings(Long customerId) {
+        return (ArrayList<Booking>) bookingRepository.findByCustomerId(customerId);
     }
 
     // Returns the Booking if they exist or a null Booking
     public Optional<Booking> getBooking(Long id) {
-        Optional<Booking> Booking = bookingRepository.findById(id);
-        return Booking;
+        Optional<Booking> booking = bookingRepository.findById(id);
+        return booking;
     }
 
     // Deletes if it exists
     public boolean deleteBooking(Long id) {
-        System.out.println("I can print stuff");
         try {
             bookingRepository.deleteById(id);
         }
