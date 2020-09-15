@@ -98,12 +98,18 @@ function BusinessLoginForm(props) {
       >
         {state.successMessage}
       </div>
-      <div className="registerMessage">
+      <div>
+        <br></br>
+      </div>
+      {/* <div className="registerMessage">
         <span>Dont have an account? </span>
-        <button className="loginText" onClick={() => redirectToRegister()}>
+        <button
+          className="loginText"
+          // onClick={() => redirectToRegister()}
+        >
           Sign Up
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }

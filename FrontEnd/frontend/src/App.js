@@ -49,7 +49,12 @@ class App extends Component {
                 style={{ fontSize: 30 }}
                 color="danger"
                 onClick={() => {
-                  this.setState({ customerLogin: true, businessLogin: false });
+                  this.setState({
+                    customerLogin: true,
+                    businessLogin: false,
+                    customerSignUp: false,
+                    businessSignUp: false,
+                  });
                 }}
               >
                 Customer
@@ -59,7 +64,12 @@ class App extends Component {
                 style={{ fontSize: 30 }}
                 color="warning"
                 onClick={() => {
-                  this.setState({ businessLogin: true, customerLogin: false });
+                  this.setState({
+                    businessLogin: true,
+                    customerLogin: false,
+                    customerSignUp: false,
+                    businessSignUp: false,
+                  });
                 }}
               >
                 Business owner
@@ -93,6 +103,25 @@ class App extends Component {
                   {this.state.businessSignUp ? <BusinessSignupForm /> : null}
                 </Route>
               </Switch>
+            </div>
+
+            <div class="sign-up-button" align="center">
+              <div className="registerMessage">
+                <span>Dont have an account? </span>
+                <button
+                  className="loginText"
+                  onClick={() => {
+                    this.setState({
+                      customerLogin: false,
+                      businessLogin: false,
+                      customerSignUp: true,
+                      businessSignUp: false,
+                    });
+                  }}
+                >
+                  Sign Up
+                </button>
+              </div>
             </div>
           </div>
         </div>
