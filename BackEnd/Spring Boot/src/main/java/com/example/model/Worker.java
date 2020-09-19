@@ -19,6 +19,7 @@ public class Worker extends User {
     @OneToMany
     private List<Booking> bookings;
 
+
     private String profile;
 
 }
