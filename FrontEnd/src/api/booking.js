@@ -59,7 +59,29 @@ export function makeBooking(data, existingBookings) {
 }
 
 
+// Delete a room booking
+export function deleteBooking(serviceId, bookingId) {
+  return api.delete(`/service/${serviceId}/${bookingId}`)
+    .then(res => res.data)
+}
 
-   
+export function updateBooking(self, updatedBooking, loadMyBookings) {
+  self.setState((previousState) => {
+    // Find the relevant booking in React State and replace it with the new booking data
+    const updatedbookingData = previousState.bookingData.map((service) => {
+      if (service._id === updatedBooking._id) {
+        return updatedBooking
+      } else {
+        return service      }
+    })
+    return {
+      // Update the booking data in application state
+      bookingData: updatedRoomData,
+      currentBooking: updatedBooking
+    }
+  })
   loadMyBookings()
+}
+   
+  
 
