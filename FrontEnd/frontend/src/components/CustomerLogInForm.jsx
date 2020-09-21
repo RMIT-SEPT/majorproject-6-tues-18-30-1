@@ -89,7 +89,7 @@ function CustomerLoginForm(props) {
           className="btn btn-primary"
           onClick={handleSubmitClick}
         >
-          Submit
+          Login
         </button>
       </form>
       <div
