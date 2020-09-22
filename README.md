@@ -4,7 +4,7 @@
 
 ## Members
 * ELLIOTT, Matthew (s3689291)
-* GEORGE, Ann (s3507109)
+* GEORGE, Ann Mary (s3507109)
 * MCSHANE, Liam (s3644179)
 
 ## Records
