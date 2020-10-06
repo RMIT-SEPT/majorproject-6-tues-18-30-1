@@ -19,16 +19,16 @@ public abstract class User {
     private String phoneNum;
     @NotBlank(message = "Email is required")
     private String email;
-    @NotBlank(message = "Street Number is required")
-    private String streetNum;
-    @NotBlank(message = "Street Name is required")
-    private String streetName;
-    @NotBlank(message = "Suburb is required")
-    private String suburb;
-    @NotBlank(message = "Postcode is required")
-    private String postcode;
-    @NotBlank(message = "State is required")
-    private String state;
+//    @NotBlank(message = "Street Number is required")
+//    private String streetNum;
+//    @NotBlank(message = "Street Name is required")
+//    private String streetName;
+//    @NotBlank(message = "Suburb is required")
+//    private String suburb;
+//    @NotBlank(message = "Postcode is required")
+//    private String postcode;
+//    @NotBlank(message = "State is required")
+//    private String state;
 
     private Date created_At;
     private Date updated_at;
@@ -42,6 +42,13 @@ public abstract class User {
     }
     public User (Long id) {
         this.id = id;
+    }
+
+    public User(@NotBlank(message = "First name is required") String firstName, @NotBlank(message = "Last name is required") String lastName, @NotBlank(message = "Phone number is required") String phoneNum, @NotBlank(message = "Email is required") String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNum = phoneNum;
+        this.email = email;
     }
 
     // Methods
@@ -98,45 +105,45 @@ public abstract class User {
         this.email = email;
     }
 
-    public String getStreetNum() {
-        return streetNum;
-    }
-
-    public void setStreetNum(String streetNum) {
-        this.streetNum = streetNum;
-    }
-
-    public String getStreetName() {
-        return streetName;
-    }
-
-    public void setStreetName(String streetName) {
-        this.streetName = streetName;
-    }
-
-    public String getSuburb() {
-        return suburb;
-    }
-
-    public void setSuburb(String suburb) {
-        this.suburb = suburb;
-    }
-
-    public String getPostcode() {
-        return postcode;
-    }
-
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
+//    public String getStreetNum() {
+//        return streetNum;
+//    }
+//
+//    public void setStreetNum(String streetNum) {
+//        this.streetNum = streetNum;
+//    }
+//
+//    public String getStreetName() {
+//        return streetName;
+//    }
+//
+//    public void setStreetName(String streetName) {
+//        this.streetName = streetName;
+//    }
+//
+//    public String getSuburb() {
+//        return suburb;
+//    }
+//
+//    public void setSuburb(String suburb) {
+//        this.suburb = suburb;
+//    }
+//
+//    public String getPostcode() {
+//        return postcode;
+//    }
+//
+//    public void setPostcode(String postcode) {
+//        this.postcode = postcode;
+//    }
+//
+//    public String getState() {
+//        return state;
+//    }
+//
+//    public void setState(String state) {
+//        this.state = state;
+//    }
 
     public Date getCreated_At() {
         return created_At;
