@@ -63,6 +63,7 @@ public class ServiceController {
     }
 
     // Functional services that are essential sub read tasks
+
     @GetMapping("/{id}/slots/")
     public ResponseEntity getSlots(@PathVariable Long id, @PathVariable String businessId) {
         Optional<Service> service = serviceService.getService(id);
@@ -71,12 +72,12 @@ public class ServiceController {
         }
         // Making slots given a start time and a service length.
         Service service1 = service.get();
-        LocalDateTime time = service1.getStartTime();
-        ArrayList<LocalDateTime> slotTimes = new ArrayList<LocalDateTime>();
-        while (time.isBefore(service1.getEndTime().minus(service1.getLength(), ChronoUnit.MINUTES))) {
+        LocalTime time = service1.getStartTime();
+        ArrayList<LocalTime> slotTimes = new ArrayList<LocalTime>();
+        while (time.isBefore(service1.getEndTime().minus(service1.getLength(), ChronoUnit.MINUTES)) || time.equals(service1.getEndTime().minus(service1.getLength(), ChronoUnit.MINUTES))) {
             slotTimes.add(time);
-            time.plusMinutes(service1.getLength());
+            time = time.plusMinutes(service1.getLength());
         }
-        return new ResponseEntity<ArrayList<LocalDateTime>> (slotTimes, HttpStatus.OK);
+        return new ResponseEntity<ArrayList<LocalTime>> (slotTimes, HttpStatus.OK);
     }
 }

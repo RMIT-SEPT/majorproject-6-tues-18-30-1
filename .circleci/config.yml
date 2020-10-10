@@ -1,0 +1,23 @@
+version: 2
+jobs:
+  build-and-test:
+    docker:
+      - image: circleci/openjdk:8-jdk-stretch
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            cd BackEnd/SpringBoot
+            mvn dependency:go-offline
+      - run:
+          name: Run tests
+          command: |
+            cd BackEnd/SpringBoot
+            mvn test
+
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - build-and-test

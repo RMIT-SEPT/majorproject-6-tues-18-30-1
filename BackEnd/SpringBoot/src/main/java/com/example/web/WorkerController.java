@@ -19,6 +19,7 @@ public class WorkerController {
 
     @PostMapping("")                // What to do with a POST request
     public ResponseEntity<Worker> createNewWorker(@RequestBody Worker worker) {
+        System.out.println(worker);
         Worker worker1 = workerService.saveOrUpdateWorker(worker);
         return new ResponseEntity<Worker>(worker, HttpStatus.CREATED);
     }
