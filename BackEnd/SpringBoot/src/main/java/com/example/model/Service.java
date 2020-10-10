@@ -1,12 +1,14 @@
 package com.example.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Future;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -23,10 +25,10 @@ public class Service {
     private int length; // In minutes
     // Times each service is available for everyday, this is very simplistic and should be made variable in the future
     //@DateTimeFormat(iso = DateTimeFormatter.ISO_LOCAL_DATE_TIME)
-    @JsonFormat(pattern = "HH:mm")
+    @JsonDeserialize(as = LocalDateTime.class)
     private LocalDateTime startTime;
     //@DateTimeFormat(iso = DateTimeFormatter.ofPattern("HH:mm"))
-    @JsonFormat(pattern = "HH:mm")
+    @JsonDeserialize(as = LocalDateTime.class)
     private LocalDateTime endTime;
 
     private Date created_at;
