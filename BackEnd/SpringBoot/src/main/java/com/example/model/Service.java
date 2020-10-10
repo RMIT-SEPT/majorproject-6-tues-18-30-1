@@ -25,11 +25,11 @@ public class Service {
     private int length; // In minutes
     // Times each service is available for everyday, this is very simplistic and should be made variable in the future
     //@DateTimeFormat(iso = DateTimeFormatter.ISO_LOCAL_DATE_TIME)
-    @JsonDeserialize(as = LocalDateTime.class)
-    private LocalDateTime startTime;
+    @JsonDeserialize(as = LocalTime.class)
+    private LocalTime startTime;
     //@DateTimeFormat(iso = DateTimeFormatter.ofPattern("HH:mm"))
-    @JsonDeserialize(as = LocalDateTime.class)
-    private LocalDateTime endTime;
+    @JsonDeserialize(as = LocalTime.class)
+    private LocalTime endTime;
 
     private Date created_at;
     private Date updated_at;
@@ -70,19 +70,19 @@ public class Service {
         this.length = length;
     }
 
-    public LocalDateTime getStartTime() {
+    public LocalTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
+    public void setStartTime(LocalTime startTime) {
         this.startTime = startTime;
     }
 
-    public LocalDateTime getEndTime() {
+    public LocalTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalDateTime endTime) {
+    public void setEndTime(LocalTime endTime) {
         this.endTime = endTime;
     }
 }

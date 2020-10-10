@@ -40,7 +40,7 @@ public class Booking {
 	@Future
 	private LocalDateTime startTime;
 	//private LocalDateTime endTime;
-	private int bookingLength; // in minutes
+	//private int bookingLength; // in minutes
 
 	//@Column(name="service_type")
 	//private String serviceType;
@@ -120,9 +120,9 @@ public class Booking {
 		return customer;
 	}
 
-	public double getBookingLength() {
-		return bookingLength;
-	}
+//	public double getBookingLength() {
+//		return bookingLength;
+//	}
 	
     public void setId(Long id) {
 		this.id = id;
