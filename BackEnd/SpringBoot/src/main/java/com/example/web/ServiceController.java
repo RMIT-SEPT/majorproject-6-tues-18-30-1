@@ -1,5 +1,6 @@
 package com.example.web;
 
+import com.example.model.Business;
 import com.example.model.Service;
 import com.example.services.ServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,21 +25,21 @@ public class ServiceController {
     private ServiceService serviceService;
 
     @PostMapping("")
-    public ResponseEntity<Service> createNewService(@RequestBody Service service, @PathVariable String businessId) {
-        service.
+    public ResponseEntity<Service> createNewService(@RequestBody Service service, @PathVariable Long businessId) {
+        service.setBusiness(new Business(businessId));
         Service service1 = serviceService.saveOrUpdateService(service);
         return new ResponseEntity<Service>(service, HttpStatus.CREATED);
     }
 
     @GetMapping("")
-    public ResponseEntity<ArrayList<Service>> returnServices(@PathVariable String businessId) {
+    public ResponseEntity<ArrayList<Service>> returnServices(@PathVariable Long businessId) {
         ArrayList<Service> services = new ArrayList<Service>();
-        services = serviceService.getServices();
+        services = serviceService.getServices(businessId);
         return new ResponseEntity<ArrayList<Service>>(services, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Service> getService(@PathVariable Long id, @PathVariable String businessId) {
+    public ResponseEntity<Service> getService(@PathVariable Long id, @PathVariable Long businessId) {
         Optional<Service> service = serviceService.getService(id);
         if (service.isPresent()) {
             return new ResponseEntity<Service>(service.get(), HttpStatus.OK);
@@ -47,7 +48,7 @@ public class ServiceController {
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<Service> replaceService(@RequestBody Service service, @PathVariable Long id, @PathVariable String businessId) {
+    public ResponseEntity<Service> replaceService(@RequestBody Service service, @PathVariable Long id, @PathVariable Long businessId) {
         service.setId(id);
         Service service1 = serviceService.saveOrUpdateService(service);
         return new ResponseEntity<Service>(service, HttpStatus.CREATED);
@@ -55,7 +56,7 @@ public class ServiceController {
 
     // Really need to think about how deletes should work, this is probably violating the database pretty hard
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteService(@PathVariable Long id, @PathVariable String businessId) {
+    public ResponseEntity deleteService(@PathVariable Long id, @PathVariable Long businessId) {
         if (serviceService.deleteService(id)) {
             return new ResponseEntity(HttpStatus.OK);
         }
@@ -65,7 +66,7 @@ public class ServiceController {
     // Functional services that are essential sub read tasks
 
     @GetMapping("/{id}/slots/")
-    public ResponseEntity getSlots(@PathVariable Long id, @PathVariable String businessId) {
+    public ResponseEntity getSlots(@PathVariable Long id, @PathVariable Long businessId) {
         Optional<Service> service = serviceService.getService(id);
         if (!service.isPresent()) {
             return new ResponseEntity(HttpStatus.NOT_FOUND);

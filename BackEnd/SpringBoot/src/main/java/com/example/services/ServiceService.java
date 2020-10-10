@@ -1,5 +1,6 @@
 package com.example.services;
 
+import com.example.model.Booking;
 import com.example.model.Service;
 import com.example.repositories.ServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,9 @@ public class ServiceService {
         return serviceRepository.save(service);
     }
 
-    // Returns all the services
-    public ArrayList<Service> getServices() {
-        return (ArrayList<Service>) serviceRepository.findAll();
+    // Returns all the services for a business
+    public ArrayList<Service> getServices(Long businessId) {
+        return (ArrayList<Service>) serviceRepository.findByBusinessId(businessId);
     }
 
     // Returns the service if they exist or a null service

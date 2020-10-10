@@ -42,6 +42,9 @@ public class Service {
     public Service() {
 
     }
+    public Service(Long id) {
+        this.id = id;
+    }
 
     public Long getId() {
         return id;
@@ -89,5 +92,13 @@ public class Service {
 
     public void setEndTime(LocalTime endTime) {
         this.endTime = endTime;
+    }
+
+    public Business getBusiness() {
+        return business;
+    }
+
+    public void setBusiness(Business business) {
+        this.business = business;
     }
 }

@@ -38,4 +38,12 @@ public class Worker extends User {
     public void setProfile(String profile) {
         this.profile = profile;
     }
+
+    public Business getBusiness() {
+        return business;
+    }
+
+    public void setBusiness(Business business) {
+        this.business = business;
+    }
 }

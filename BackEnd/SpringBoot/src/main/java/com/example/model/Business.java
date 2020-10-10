@@ -23,6 +23,13 @@ public class Business {
 	private String name;
 	private Date created_At;
 	private Date updated_at;
+
+	public Business() {
+	}
+
+	public Business(Long id) {
+		this.id = id;
+	}
 	
 	
 	public Date getCreated_At() {
@@ -52,8 +59,6 @@ public class Business {
 //	@ManyToOne
 //	private List<String> employees;
 
-	public Business() {
-	}
 
 	public Long getId() {
 		return id;

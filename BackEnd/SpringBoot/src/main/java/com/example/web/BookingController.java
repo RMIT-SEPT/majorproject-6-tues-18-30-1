@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import com.example.model.Customer;
+import com.example.model.Service;
+import com.example.model.Worker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +34,8 @@ public class BookingController {
     @PostMapping("/customers/{customerId}/bookings")
     public ResponseEntity<Booking> createNewBooking(@RequestBody Booking booking, @PathVariable Long customerId) {
         booking.setCustomer(new Customer(customerId));
+        //booking.setService(new Service(serviceID));
+        //booking.setWorker(new Worker(workerID));
         Booking booking1 = bookingService.saveOrUpdateBooking(booking);
         return new ResponseEntity<Booking>(booking, HttpStatus.CREATED);
     }
