@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/services")
+@RequestMapping("/api/businesses/{businessId}/services")
 public class ServiceController {
 
     // CRUD operations for services
@@ -24,20 +24,21 @@ public class ServiceController {
     private ServiceService serviceService;
 
     @PostMapping("")
-    public ResponseEntity<Service> createNewService(@RequestBody Service service) {
+    public ResponseEntity<Service> createNewService(@RequestBody Service service, @PathVariable String businessId) {
+        service.
         Service service1 = serviceService.saveOrUpdateService(service);
         return new ResponseEntity<Service>(service, HttpStatus.CREATED);
     }
 
     @GetMapping("")
-    public ResponseEntity<ArrayList<Service>> returnServices() {
+    public ResponseEntity<ArrayList<Service>> returnServices(@PathVariable String businessId) {
         ArrayList<Service> services = new ArrayList<Service>();
         services = serviceService.getServices();
         return new ResponseEntity<ArrayList<Service>>(services, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Service> getService(@PathVariable Long id) {
+    public ResponseEntity<Service> getService(@PathVariable Long id, @PathVariable String businessId) {
         Optional<Service> service = serviceService.getService(id);
         if (service.isPresent()) {
             return new ResponseEntity<Service>(service.get(), HttpStatus.OK);
@@ -46,7 +47,7 @@ public class ServiceController {
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<Service> replaceService(@RequestBody Service service, @PathVariable Long id) {
+    public ResponseEntity<Service> replaceService(@RequestBody Service service, @PathVariable Long id, @PathVariable String businessId) {
         service.setId(id);
         Service service1 = serviceService.saveOrUpdateService(service);
         return new ResponseEntity<Service>(service, HttpStatus.CREATED);
@@ -54,7 +55,7 @@ public class ServiceController {
 
     // Really need to think about how deletes should work, this is probably violating the database pretty hard
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteService(@PathVariable Long id) {
+    public ResponseEntity deleteService(@PathVariable Long id, @PathVariable String businessId) {
         if (serviceService.deleteService(id)) {
             return new ResponseEntity(HttpStatus.OK);
         }
@@ -63,7 +64,7 @@ public class ServiceController {
 
     // Functional services that are essential sub read tasks
     @GetMapping("/{id}/slots/")
-    public ResponseEntity getSlots(@PathVariable Long id) {
+    public ResponseEntity getSlots(@PathVariable Long id, @PathVariable String businessId) {
         Optional<Service> service = serviceService.getService(id);
         if (!service.isPresent()) {
             return new ResponseEntity(HttpStatus.NOT_FOUND);

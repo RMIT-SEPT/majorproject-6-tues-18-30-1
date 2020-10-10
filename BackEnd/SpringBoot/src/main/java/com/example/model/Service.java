@@ -3,10 +3,7 @@ package com.example.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -28,6 +25,9 @@ public class Service {
     //@DateTimeFormat(iso = DateTimeFormatter.ofPattern("HH:mm"))
     @JsonFormat(pattern = "HH:mm")
     private LocalDateTime endTime;
+
+    @ManyToOne
+    private Business business;
 
     private Date created_at;
     private Date updated_at;

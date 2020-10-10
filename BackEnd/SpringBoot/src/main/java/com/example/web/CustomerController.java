@@ -47,24 +47,6 @@ public class CustomerController {
         return new ResponseEntity<Customer>(customer, HttpStatus.CREATED);
     }
 
-    // Patch is long, but I like it better than put :/
-//    @PatchMapping("/{id}")
-//    public ResponseEntity<User> updateUser(@RequestBody User updatedUser, @PathVariable Long id) {
-//        Optional<User> storedUser = userService.getUser(id);
-//        if (!storedUser.isPresent()) {
-//            return new ResponseEntity(HttpStatus.NOT_FOUND);
-//        }
-//        if (updatedUser.getFirstName() != null) {
-//            storedUser.get().setFirstName(updatedUser.getFirstName());
-//        }
-//        if (updatedUser.getLastName() != null) {
-//            storedUser.get().setLastName(updatedUser.getLastName());
-//        }
-//
-//        User user1 = userService.saveOrUpdateUser(storedUser.get());
-//        return new ResponseEntity<User>(storedUser.get(), HttpStatus.CREATED);
-//    }
-
     // Really need to think about how deletes should work, this is probably violating the database pretty hard
     @DeleteMapping("/{id}")
     public ResponseEntity deleteCustomer(@PathVariable Long id) {
