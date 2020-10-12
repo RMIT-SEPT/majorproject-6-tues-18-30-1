@@ -29,29 +29,29 @@ function BusinessLoginForm(props) {
         if (response.status === 200) {
           setState((prevState) => ({
             ...prevState,
-            successMessage: "Login successful. Redirecting to home page..",
+            successMessage: "Login successful",
           }));
           //localStorage.setItem(ACCESS_TOKEN_NAME, response.data.token);
-          redirectToHome();
+          showBusinessHome();
           props.showError(null);
         } else if (response.code === 204) {
           props.showError("Username and password do not match");
         } else {
-          props.showError("Username does not exists");
+          props.showError("Username does not exist");
         }
       })
       .catch(function (error) {
         console.log(error);
       });
   };
-  const redirectToHome = () => {
-    props.updateTitle("Home");
+  const showBusinessHome = () => {
+    props.updateTitle("Business settings home");
     props.history.push("/home");
   };
-  const redirectToRegister = () => {
-    props.history.push("/register");
-    props.updateTitle("Register");
-  };
+  // const redirectToRegister = () => {
+  //   props.history.push("/register");
+  //   props.updateTitle("Register");
+  // };
   return (
     <div className="card col-12 col-lg-4 login-card mt-2 hv-center">
       <form>

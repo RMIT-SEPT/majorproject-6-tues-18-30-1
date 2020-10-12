@@ -25,7 +25,7 @@ function CustomerSignupForm(props) {
     props.updateTitle("Login");
     props.history.push("/login");
   };
-  const handleSubmitClick = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (state.password === state.confirmPassword) {
       // INSERT "PUT" API CALL HERE
@@ -62,7 +62,7 @@ function CustomerSignupForm(props) {
           console.log(error);
         });
     } else {
-      props.showError("Please enter valid username and password");
+      // props.showError("Please enter valid username and password");
     }
   };
   // if (!this.state.visible) {
@@ -105,7 +105,7 @@ function CustomerSignupForm(props) {
         <button
           type="submit"
           className="btn btn-primary"
-          onClick={handleSubmitClick}
+          onClick={handleSubmit}
         >
           Register
         </button>

@@ -25,7 +25,7 @@ function BusinessSignupForm(props) {
     props.updateTitle("Login");
     props.history.push("/login");
   };
-  const handleSubmitClick = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (state.password === state.confirmPassword) {
       // INSERT "PUT" API CALL HERE
@@ -105,7 +105,7 @@ function BusinessSignupForm(props) {
         <button
           type="submit"
           className="btn btn-primary"
-          onClick={handleSubmitClick}
+          onClick={handleSubmit}
         >
           Register
         </button>
