@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController                     // Marks class as a controller
 @RequestMapping("/api/customers")       // The URI that this controller is connected to
 public class CustomerController {

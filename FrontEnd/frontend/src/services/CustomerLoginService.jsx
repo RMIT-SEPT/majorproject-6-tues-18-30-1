@@ -1,16 +1,20 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/";
+const API_URL = "http://localhost:8080/customers/";
 
 class CustomerLoginService {
-  async customerLogin(username, password) {
-    const response = await axios.post(API_URL + "authorise", {
-      username,
-      password,
+  async customerLogin(id) {
+    const response = axios.get(API_URL + id).then(function (response) {
+      console.log(response.data);
+      console.log(response.status);
+      console.log(response.statusText);
+      console.log(response.headers);
+      console.log(response.config);
     });
-    if (response.data.accessToken) {
-      localStorage.setItem("customer", JSON.stringify(response.data));
-    }
+
+    // if (response.data.accessToken) {
+    //   localStorage.setItem("customer", JSON.stringify(response.data));
+    // }
     return response.data;
   }
 
@@ -18,18 +22,8 @@ class CustomerLoginService {
     localStorage.removeItem("customer");
   }
 
-  createCustomer(firstName, lastName, email, password, phoneNumber) {
-    return axios.post(API_URL + "customer", {
-      firstName,
-      lastName,
-      email,
-      password,
-      phoneNumber,
-    });
-  }
-
   getCustomer() {
-    return JSON.parse(localStorage.getItem("customer"));
+    return JSON.parse(localStorage.getItem("customers"));
   }
 }
 

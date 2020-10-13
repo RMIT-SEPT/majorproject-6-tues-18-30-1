@@ -6,3 +6,7 @@ terraform.tfstate.backup
 tmp/
 /.metadata/
 node_modules
+*.version
+*.xmi
+*.index
+*.tree

@@ -14,6 +14,7 @@ import java.time.temporal.TemporalUnit;
 import java.util.ArrayList;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/services")
 public class ServiceController {

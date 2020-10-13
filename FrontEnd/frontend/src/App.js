@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import { useState } from "react";
 import ReactDOM, { render } from "react-dom";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  withRouter,
+} from "react-router-dom";
 
 import logo from "./logo.svg";
 
@@ -12,16 +18,12 @@ import "./App.css";
 
 import Header from "./components/Header";
 import Home from "./components/Home";
-import CustomerLogInForm from "./components/CustomerLogInForm";
-import CustomerSignUpForm from "./components/CustomerSignUpForm";
-import BusinessLogInForm from "./components/BusinessLogInForm";
-import BusinessSignupForm from "./components/BusinessSignupForm";
 
 import CustomerLoginService from "./services/CustomerLoginService";
 
-import BusinessLoginFormTest from "./components/BusinessLoginFormTest";
-import LoginFormTest from "./components/LoginFormTest";
-import RegisterForm from "./components/RegisterForm";
+import CustomerLoginForm from "./components/CustomerLoginForm";
+import CustomerRegisterForm from "./components/CustomerRegisterForm";
+import BusinessLoginForm from "./components/BusinessLoginForm";
 import BusinessRegisterForm from "./components/BusinessRegisterForm";
 
 class App extends Component {
@@ -33,8 +35,11 @@ class App extends Component {
       businessLogin: false,
       customerSignUp: false,
       businessSignUp: false,
+      customerOption: false,
+      businessOption: false,
       businessHome: false,
       customerHome: false,
+
       user: undefined,
     };
   }
@@ -73,12 +78,14 @@ class App extends Component {
                     businessLogin: false,
                     customerSignUp: false,
                     businessSignUp: false,
+                    customerOption: true,
+                    businessOption: false,
                   });
                 }}
               >
-                Customer
+                Customer Log-In
               </Button>
-              <span></span>
+              <span> </span>
               <Button
                 style={{ fontSize: 30 }}
                 color="warning"
@@ -88,17 +95,21 @@ class App extends Component {
                     customerLogin: false,
                     customerSignUp: false,
                     businessSignUp: false,
+                    customerOption: false,
+                    businessOption: true,
                   });
                 }}
               >
-                Business owner
+                Business Log-In
               </Button>
             </div>
+
+            <div></div>
 
             <div class="customer-log-in" align="center">
               <Switch>
                 <Route path="/" exact="true">
-                  {this.state.customerLogin ? <LoginFormTest /> : null}
+                  {this.state.customerLogin ? <CustomerLoginForm /> : null}
                 </Route>
               </Switch>
             </div>
@@ -106,7 +117,7 @@ class App extends Component {
             <div class="customer-sign-up" align="center">
               <Switch>
                 <Route path="/" exact="true">
-                  {this.state.customerSignUp ? <RegisterForm /> : null}
+                  {this.state.customerSignUp ? <CustomerRegisterForm /> : null}
                 </Route>
               </Switch>
             </div>
@@ -114,7 +125,7 @@ class App extends Component {
             <div class="business-log-in" align="center">
               <Switch>
                 <Route path="/" exact="true">
-                  {this.state.businessLogin ? <BusinessLoginFormTest /> : null}
+                  {this.state.businessLogin ? <BusinessLoginForm /> : null}
                 </Route>
               </Switch>
             </div>
@@ -127,23 +138,60 @@ class App extends Component {
               </Switch>
             </div>
 
-            <div class="sign-up-button" align="center">
-              <div className="registerMessage">
-                <span>Dont have an account? </span>
-                <button
-                  className="loginText"
-                  onClick={() => {
-                    this.setState({
-                      customerLogin: false,
-                      businessLogin: false,
-                      customerSignUp: true,
-                      businessSignUp: false,
-                    });
-                  }}
-                >
-                  Sign Up
-                </button>
-              </div>
+            <div class="business-option" align="center">
+              <Switch>
+                <Route path="/" exact="true">
+                  {this.state.businessOption ? (
+                    <div class="business-sign-up-button" align="center">
+                      <div className="registerBusinessMessage">
+                        <span>Want to create an account for a business? </span>
+                        <button
+                          className="loginText"
+                          onClick={() => {
+                            this.setState({
+                              customerLogin: false,
+                              businessLogin: false,
+                              customerSignUp: false,
+                              businessOption: false,
+                              businessSignUp: true,
+                              customerOption: true,
+                            });
+                          }}
+                        >
+                          Sign Up
+                        </button>
+                      </div>
+                    </div>
+                  ) : null}
+                </Route>
+              </Switch>
+            </div>
+
+            <div class="customer-option" align="center">
+              <Switch>
+                <Route path="/" exact="true">
+                  {this.state.customerOption ? (
+                    <div className="registerMessage">
+                      <span>Dont have an account? </span>
+                      <button
+                        className="loginText"
+                        onClick={() => {
+                          this.setState({
+                            customerLogin: false,
+                            businessLogin: false,
+                            customerSignUp: true,
+                            businessOption: true,
+                            businessSignUp: false,
+                            customerOption: false,
+                          });
+                        }}
+                      >
+                        Sign Up
+                      </button>
+                    </div>
+                  ) : null}
+                </Route>
+              </Switch>
             </div>
           </div>
 
@@ -153,30 +201,30 @@ class App extends Component {
               <Route
                 exact
                 path="/business-login"
-                component={BusinessLogInForm}
+                component={BusinessLoginForm}
               />
               <Route
                 exact
                 path="/business-signup"
-                component={BusinessSignupForm}
+                component={BusinessRegisterForm}
               />
               <Route
                 exact
                 path="/customer-login"
-                component={CustomerLogInForm}
+                component={CustomerLoginForm}
               />
               <Route
                 exact
                 path="/customer-signup"
-                component={CustomerSignUpForm}
+                component={CustomerRegisterForm}
               />
-              <Route exact path="/customer-register" component={RegisterForm} />
-              <Route exact path="/login-test" component={LoginFormTest} />
-
-              {/* <Route exact path="/profile" component={Profile} />
-              <Route path="/user" component={BoardUser} />
-              <Route path="/mod" component={BoardModerator} />
-              <Route path="/admin" component={BoardAdmin} /> */}
+              <Route
+                exact
+                path="/customer-register"
+                component={CustomerRegisterForm}
+              />
+              <Route exact path="/login-test" component={CustomerLoginForm} />
+              <Route exact path="/home" component={Home} />
             </Switch>
           </div>
         </div>
@@ -184,30 +232,5 @@ class App extends Component {
     );
   }
 }
-
-// class AppClass extends Component {
-//   state = {
-//     isLoading: true,
-//     groups: []
-//   };
-
-//   async successfulMount() {
-//     const reply = await fetch ('users');
-//     const body = await response.json();
-//     this.setState({ groups: body, isLoading: false });
-//   }
-// }
-
-// render() {
-//   const {groups, isLoading} = this.state;
-
-//   if(isLoading) {
-//     return <p>Processing your request...</p>;
-//   }
-
-//   return (
-//     <div className=""
-//   )
-// }
 
 export default App;
