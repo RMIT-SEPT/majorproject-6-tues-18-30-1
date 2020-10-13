@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "add": "^2.0.6",
+    "axios": "^0.20.0",
+    "react-router-dom": "^5.2.0",
+    "react-validation": "^3.0.7",
+    "validator": "^13.1.17",
+    "yarn": "^1.22.5"
+  }
+}

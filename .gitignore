@@ -5,5 +5,4 @@ terraform.tfstate
 terraform.tfstate.backup
 tmp/
 /.metadata/
-.DS_Store
-.idea
+node_modules
