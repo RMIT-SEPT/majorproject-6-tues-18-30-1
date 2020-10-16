@@ -72,6 +72,12 @@ public class Booking {
 
 	}
 
+	public Booking(LocalDateTime startTime, Service service, Worker worker) {
+		this.startTime = startTime;
+		this.service = service;
+		this.worker = worker;
+	}
+
 
 	// Getters and setters
 

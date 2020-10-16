@@ -1,7 +1,9 @@
 package com.example.web;
 
 import com.example.model.Business;
+import com.example.model.Service;
 import com.example.model.Worker;
+import com.example.model.WorkingTime;
 import com.example.services.WorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,6 +25,18 @@ public class WorkerController {
         worker.setBusiness(new Business(businessId));
         Worker worker1 = workerService.saveOrUpdateWorker(worker);
         return new ResponseEntity<Worker>(worker, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/{id}/add-workHours/{workingTimeId}")
+    public ResponseEntity<Worker> addWorkHours(@PathVariable Long businessId, @PathVariable Long workingTimeId, @PathVariable Long id) {
+
+        Optional<Worker> worker = workerService.getWorker(id);
+        if (!worker.isPresent()) {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+        worker.get().addWorkingTime(new WorkingTime(workingTimeId));
+        Worker worker1 = workerService.saveOrUpdateWorker(worker.get());
+        return new ResponseEntity<Worker>(worker.get(), HttpStatus.CREATED);
     }
 
     @GetMapping("")

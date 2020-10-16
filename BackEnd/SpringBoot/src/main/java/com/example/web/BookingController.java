@@ -24,8 +24,6 @@ import com.example.services.BookingService;
 @RestController                     // Marks class as a controller
 @RequestMapping("/api")       // The URI that this controller is connected to
 public class BookingController {
-	
-	//TODO: Fix code for this class so it is appropriate for booking: currently just copied from user class - I noticed :P
 
     @Autowired
     private BookingService bookingService;

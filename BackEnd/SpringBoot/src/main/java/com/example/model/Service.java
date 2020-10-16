@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Service {
@@ -32,9 +33,13 @@ public class Service {
     //@DateTimeFormat(iso = DateTimeFormatter.ofPattern("HH:mm"))
     @JsonDeserialize(as = LocalTime.class)
     private LocalTime endTime;
+    //private int maxConcurrentBookings;
 
     @ManyToOne
     private Business business;
+
+    @ManyToMany
+    private List<Worker> workers;
 
     private Date created_at;
     private Date updated_at;
@@ -44,6 +49,10 @@ public class Service {
     }
     public Service(Long id) {
         this.id = id;
+    }
+
+    public void addWorker(Worker worker) {
+        this.workers.add(worker);
     }
 
     public Long getId() {
@@ -100,5 +109,13 @@ public class Service {
 
     public void setBusiness(Business business) {
         this.business = business;
+    }
+
+    public List<Worker> getWorkers() {
+        return workers;
+    }
+
+    public void setWorkers(List<Worker> workers) {
+        this.workers = workers;
     }
 }
