@@ -21,9 +21,9 @@ public class WorkerService {
         return workerRepository.save(worker);
     }
 
-    // Returns all the workers
-    public ArrayList<Worker> getWorkers() {
-        return (ArrayList<Worker>) workerRepository.findAll();
+    // Returns all the workers for a business
+    public ArrayList<Worker> getWorkers(Long businessId) {
+        return (ArrayList<Worker>) workerRepository.findByBusinessId(businessId);
     }
 
     // Returns the worker if they exist or a null worker
@@ -42,5 +42,4 @@ public class WorkerService {
         }
         return true;
     }
-
 }

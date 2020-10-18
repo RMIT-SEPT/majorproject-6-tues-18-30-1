@@ -20,9 +20,16 @@ public class Business {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Long id;
-	private String businessName;
+	private String name;
 	private Date created_At;
 	private Date updated_at;
+
+	public Business() {
+	}
+
+	public Business(Long id) {
+		this.id = id;
+	}
 	
 	
 	public Date getCreated_At() {
@@ -45,23 +52,27 @@ public class Business {
 		this.id = id;
 	}
 
-	public void setBusinessName(String businessName) {
-		this.businessName = businessName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 //	@ManyToOne
 //	private List<String> employees;
 
-	public Business() {
-	}
 
 	public Long getId() {
 		return id;
 	}
 
-	public String getBusinessName() {
-		return businessName;
+	public String getName() {
+		return name;
 	}
+
+	@OneToMany
+	private List<Service> services;
+
+	@OneToMany
+	private List<Worker> workers;
 	
     // When it is created, add a created at date
     @PrePersist

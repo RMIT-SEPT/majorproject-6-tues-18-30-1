@@ -22,7 +22,7 @@ public class BookingService {
         return bookingRepository.save(booking);
     }
 
-    // Returns all the Bookings
+    // Returns all the Bookings for a customer
     public ArrayList<Booking> getBookings(Long customerId) {
         return (ArrayList<Booking>) bookingRepository.findByCustomerId(customerId);
     }

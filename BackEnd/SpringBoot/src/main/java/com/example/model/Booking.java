@@ -1,5 +1,7 @@
 package com.example.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -10,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.validation.constraints.Future;
 
 
 //@Table(name="BOOKINGS")
@@ -33,9 +36,11 @@ public class Booking {
 	//@Column
 
 	// Some redundant data here, length is described in the service table, end time can be found by adding length to start time
+	@JsonDeserialize(as = LocalDateTime.class)
+	@Future
 	private LocalDateTime startTime;
-	private LocalDateTime endTime;
-	private int bookingLength; // in minutes
+	//private LocalDateTime endTime;
+	//private int bookingLength; // in minutes
 
 	//@Column(name="service_type")
 	//private String serviceType;
@@ -65,6 +70,12 @@ public class Booking {
 
 	public Booking() {
 
+	}
+
+	public Booking(LocalDateTime startTime, Service service, Worker worker) {
+		this.startTime = startTime;
+		this.service = service;
+		this.worker = worker;
 	}
 
 
@@ -115,9 +126,9 @@ public class Booking {
 		return customer;
 	}
 
-	public double getBookingLength() {
-		return bookingLength;
-	}
+//	public double getBookingLength() {
+//		return bookingLength;
+//	}
 	
     public void setId(Long id) {
 		this.id = id;
