@@ -3,6 +3,7 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
+import { Redirect } from "react-router-dom";
 
 import CustomerSignUpService from "../services/CustomerSignUpService";
 
@@ -75,6 +76,7 @@ export default class RegisterForm extends Component {
       state: "",
       successful: false,
       message: "",
+      redirect: false,
     };
   }
 
@@ -189,10 +191,18 @@ export default class RegisterForm extends Component {
         //     });
         //   }
       );
+      this.setState({
+        redirect: true,
+      });
     }
   }
 
   render() {
+    const redirect = this.state.redirect;
+    if (redirect) {
+      return <Redirect to="/home" />;
+    }
+
     return (
       <div className="col-md-12">
         <div class="page-header">

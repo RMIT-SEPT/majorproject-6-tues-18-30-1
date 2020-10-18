@@ -2,6 +2,15 @@ import React, { Component } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
+import { Redirect } from "react-router-dom";
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  withRouter,
+} from "react-router-dom";
 
 import CustomerLoginService from "../services/CustomerLoginService";
 
@@ -15,6 +24,10 @@ const required = (value) => {
   }
 };
 
+function handleRedirect() {
+  this.history.push("/home");
+}
+
 export default class CustomerLoginForm extends Component {
   constructor(props) {
     super(props);
@@ -27,6 +40,7 @@ export default class CustomerLoginForm extends Component {
       // username: "",
       // password: "",
       loading: false,
+      redirect: false,
       message: "",
     };
   }
@@ -61,10 +75,7 @@ export default class CustomerLoginForm extends Component {
 
     if (this.checkBtn.context._errors.length === 0) {
       CustomerLoginService.customerLogin(this.state.id).then(
-        () => {
-          this.context.history.push("/home");
-          window.location.reload();
-        },
+        () => {},
         (error) => {
           const resMessage =
             (error.response &&
@@ -79,6 +90,9 @@ export default class CustomerLoginForm extends Component {
           });
         }
       );
+      this.setState({
+        redirect: true,
+      });
     } else {
       this.setState({
         loading: false,
@@ -87,6 +101,11 @@ export default class CustomerLoginForm extends Component {
   }
 
   render() {
+    const redirect = this.state.redirect;
+    if (redirect) {
+      return <Redirect to="/home" />;
+    }
+
     return (
       <div className="col-md-12">
         <div className="card card-container">
