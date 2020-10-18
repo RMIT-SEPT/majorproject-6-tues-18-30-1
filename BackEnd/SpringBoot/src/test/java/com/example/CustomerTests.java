@@ -51,6 +51,10 @@ public class CustomerTests {
     public void setup() {
 
     }
+    // ===========================
+    // Testing correct inputs work
+    //============================
+
     // Test that get request works to get all customers
     @Test
     @Transactional
@@ -64,7 +68,7 @@ public class CustomerTests {
                 .andExpect(content().string(containsString("John")))
                 .andExpect(content().string(containsString("Jane")));
     }
-    // Test that can get a single customer
+    // Test that we can get a single customer
     @Test
     @Transactional
     public void getCustomer() throws Exception {
@@ -90,11 +94,106 @@ public class CustomerTests {
                 .andExpect(content().string(containsString("Jackson")));
     }
 
-//    @Test
-//    public void testService() {
-//        Customer customer1 = new Customer("John", "Doe", "0403123123", "test1@example.com");
-//        customerService.saveOrUpdateCustomer(customer1);
-//    }
+    // Test that we can add a customer with post
+    @Test
+    @Transactional
+    public void addCustomer() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders
+                .post("/api/customers")
+                .content(asJsonString(new Customer("Jackson", "John", "0403123123", "test1@example.com")))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isCreated())
+                .andExpect(content().string(containsString("Jackson")));
+    }
+
+    // ====================================
+    // Testing incorrect inputs sends errors
+    //=====================================
+
+    // Test that we can get a single customer
+    @Test
+    @Transactional
+    public void getNonExistentCustomer() throws Exception {
+        this.mockMvc.perform(get("/api/customers/1"))
+                .andExpect(status().isNotFound());
+    }
+
+    // add customer with empty name
+    @Test
+    @Transactional
+    public void addCustomerWithEmptyFirstName() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders
+                .post("/api/customers")
+                .content(asJsonString(new Customer("", "John", "0403123123", "test1@example.com")))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
+    // add customer with invalid email
+    @Test
+    @Transactional
+    public void addCustomerWithInvalidEmail() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders
+                .post("/api/customers")
+                .content(asJsonString(new Customer("", "John", "0403123123", "test1examplecom")))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
+    // add customer to post without any fields
+    @Test
+    @Transactional
+    public void addEmptyCustomer() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders
+                .post("/api/customers")
+                .content("")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
+    // add customer with invalid phonenumber
+    @Test
+    @Transactional
+    public void addCustomerWithInvalidPhone() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders
+                .post("/api/customers")
+                .content(asJsonString(new Customer("", "John", "1", "test1examplecom")))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
+    // edit customer with invalid name
+    @Test
+    @Transactional
+    public void editCustomerWithInvalidName() throws Exception {
+        Customer customer1 = new Customer("John", "Doe", "0403123123", "test1@example.com");
+        entityManager.persist(customer1);
+        this.mockMvc.perform(MockMvcRequestBuilders
+                .put("/api/customers/1")
+                .content(asJsonString(new Customer("J", "Doe", "0403123123", "test1@example.com")))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
+    // edit customer with invalid phone number
+    @Test
+    @Transactional
+    public void editCustomerWithInvalidNumber() throws Exception {
+        Customer customer1 = new Customer("John", "Doe", "0403123123", "test1@example.com");
+        entityManager.persist(customer1);
+        this.mockMvc.perform(MockMvcRequestBuilders
+                .put("/api/customers/1")
+                .content(asJsonString(new Customer("J", "Doe", "0", "test1@example.com")))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
+    // edit customer with invalid email
+    @Test
+    @Transactional
+    public void editCustomerWithInvalidEmail() throws Exception {
+        Customer customer1 = new Customer("John", "Doe", "0403123123", "test1@example.com");
+        entityManager.persist(customer1);
+        this.mockMvc.perform(MockMvcRequestBuilders
+                .put("/api/customers/1")
+                .content(asJsonString(new Customer("J", "Doe", "0", "test1example.com")))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
 
     // helper function
     public static String asJsonString(final Object obj) {
