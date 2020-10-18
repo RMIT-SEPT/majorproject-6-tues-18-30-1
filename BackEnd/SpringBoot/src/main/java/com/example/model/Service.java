@@ -1,16 +1,21 @@
 package com.example.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.springframework.format.annotation.DateTimeFormat;
 
+
+import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Service {
@@ -23,17 +28,31 @@ public class Service {
     private int length; // In minutes
     // Times each service is available for everyday, this is very simplistic and should be made variable in the future
     //@DateTimeFormat(iso = DateTimeFormatter.ISO_LOCAL_DATE_TIME)
-    @JsonFormat(pattern = "HH:mm")
-    private LocalDateTime startTime;
+    @JsonDeserialize(as = LocalTime.class)
+    private LocalTime startTime;
     //@DateTimeFormat(iso = DateTimeFormatter.ofPattern("HH:mm"))
-    @JsonFormat(pattern = "HH:mm")
-    private LocalDateTime endTime;
+    @JsonDeserialize(as = LocalTime.class)
+    private LocalTime endTime;
+    //private int maxConcurrentBookings;
+
+    @ManyToOne
+    private Business business;
+
+    @ManyToMany
+    private List<Worker> workers;
 
     private Date created_at;
     private Date updated_at;
 
     public Service() {
 
+    }
+    public Service(Long id) {
+        this.id = id;
+    }
+
+    public void addWorker(Worker worker) {
+        this.workers.add(worker);
     }
 
     public Long getId() {
@@ -68,19 +87,35 @@ public class Service {
         this.length = length;
     }
 
-    public LocalDateTime getStartTime() {
+    public LocalTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
+    public void setStartTime(LocalTime startTime) {
         this.startTime = startTime;
     }
 
-    public LocalDateTime getEndTime() {
+    public LocalTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalDateTime endTime) {
+    public void setEndTime(LocalTime endTime) {
         this.endTime = endTime;
+    }
+
+    public Business getBusiness() {
+        return business;
+    }
+
+    public void setBusiness(Business business) {
+        this.business = business;
+    }
+
+    public List<Worker> getWorkers() {
+        return workers;
+    }
+
+    public void setWorkers(List<Worker> workers) {
+        this.workers = workers;
     }
 }
